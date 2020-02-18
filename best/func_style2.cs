@@ -6,6 +6,8 @@ public void Run()
                  .Take(config.MaxOutputLength)
                  ._<OutputFile>(config.OutputFile, Log)
                  .Write()
-                 ._(_ => "Success!");
+                 .If(_ => _.Success)
+                 	Then(_ => _._(Save))
+                 ._(_ => "Complete!");
     Log.Write(result);
 }
