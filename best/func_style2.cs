@@ -11,3 +11,21 @@ public void Run()
                  ._(_ => "Complete!");
     Log.Write(result);
 }
+
+//===============================
+
+public void Run2()
+{
+    var records = storage.Read(config.Name, config.From, config.To);
+    var changes = new Changes(records, filter)
+                  .Parse()
+                  .Take(config.MaxOutputLength);
+                  
+    var output = new OutputFile(changes, config.OutputFile, Log);
+    var result = output.Write();
+
+    if (result.Success)
+        Save(result);
+
+    Log.Write("Complete!");
+}
