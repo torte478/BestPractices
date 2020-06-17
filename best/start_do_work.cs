@@ -1,5 +1,7 @@
 classs App
 {
+	private readonly ITimer delayed;
+
 	public void Run()
 	{
 		Start(DoWork);
@@ -15,5 +17,10 @@ classs App
 	private void DoWork()
 	{
 		//... main work
+	}
+
+	private void NextIteration()
+	{
+		delayed.Start(DoWork);
 	}
 }
