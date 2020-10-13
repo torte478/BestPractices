@@ -1,13 +1,16 @@
 class Bar
 {
-	private int current	
+	private int current;
 
+	//Before	
 	public void Foo()
 	{
-		//Before
 		current = Foo1();
+	}
 
-		//After
+	//After
+	public void Foo()
+	{
 		var (exists, current) = Foo1(); //current isn't field!
 	}
 }

@@ -1,6 +1,6 @@
 var fields = GetType()
             .GetFields(BindingFlags.Instance | BindingFlags.Public);
-foeach (var field in fields)
+foreach (var field in fields)
 {
     var value = field.GetValue(this);
     var def = Activator.CreateInstance(value.GetType()); //It gets stuck
